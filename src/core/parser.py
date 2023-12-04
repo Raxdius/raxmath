@@ -6,7 +6,15 @@ MATH_SYMBOL = [
     '*',
     '/',
     '×',
-    ':'
+    ':',
+    '^',
+    '(',
+    ')'
+]
+
+NUMBER_TYPE = [
+    '.',
+    'i'
 ]
 
 
@@ -28,14 +36,21 @@ class Parser:
         return '=' in self.symbol
 
     def symbol_splitter(self):
+
         sym = ""
+
         for i, char in enumerate(self.expression):
+
             if i == len(self.expression)-1:
                 self.symbol.append(sym+char)
+
             if char.isdigit():
                 sym += char
+
             else:
+
                 if char in MATH_SYMBOL:
+
                     self.symbol.append(sym)
                     self.symbol.append(char)
                     sym = ""
@@ -44,10 +59,13 @@ class Parser:
             self.evaluate()
 
     def evaluate(self):
+
         while len(self.symbol) != 1:
-            print(self.symbol)
+
             for i, symbol in enumerate(self.symbol):
+
                 if symbol in MATH_SYMBOL:
+
                     OP1 = int(self.symbol[i-1])
                     OP2 = int(self.symbol[i+1])
 
