@@ -48,11 +48,14 @@ class Parser:
             print(self.symbol)
             for i, symbol in enumerate(self.symbol):
                 if symbol in MATH_SYMBOL:
-                    OP1 = self.symbol[i-1]
-                    OP2 = self.symbol[i+1]
+                    OP1 = int(self.symbol[i-1])
+                    OP2 = int(self.symbol[i+1])
 
                     if symbol == '+':
-                        self.answer = int(OP1) + int(OP2)
+                        self.answer = OP1 + OP2
+
+                    elif symbol == '-':
+                        self.answer = OP1 - OP2
 
                     del self.symbol[i-1:i+2]
 

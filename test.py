@@ -1,5 +1,5 @@
 import src as raxmath
 
-ret = raxmath.Parser("14+1+337+9272")
+ret = raxmath.Parser("228+1+2-1")
 
 print(ret.answer)
